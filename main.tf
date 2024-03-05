@@ -15,3 +15,15 @@ module "vpc" {
 
 }
 
+module "eks" {
+  source   = "git::https://github.com/raghudevopsb77/tf-module-eks.git"
+  for_each = var.eks
+
+  env          = var.env
+  project_name = var.project_name
+  component    = "eks"
+
+  subnet_ids   = lookup(lookup(module.vpc, "main", null), "app_subnets_ids", null)
+
+}
+
