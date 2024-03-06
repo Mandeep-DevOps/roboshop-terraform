@@ -91,24 +91,24 @@ module "elasticache" {
 
 }
 
-module "rabbitmq" {
-  source = "git::https://github.com/raghudevopsb77/tf-module-rabbitmq.git"
-
-  for_each      = var.rabbitmq
-  instance_type = each.value["instance_type"]
-
-  env             = var.env
-  tags            = {}
-  kms             = var.kms_key_id
-  bastion_cidrs   = var.bastion_cidrs
-  route53_zone_id = var.zone_id
-  project_name = var.project_name
-
-  subnets  = lookup(lookup(module.vpc, "main", null), "db_subnets", null)
-  vpc_id   = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-  sg_cidrs = lookup(lookup(var.vpc, "main", null), "app_subnets", null)
-
-}
+#module "rabbitmq" {
+#  source = "git::https://github.com/raghudevopsb77/tf-module-rabbitmq.git"
+#
+#  for_each      = var.rabbitmq
+#  instance_type = each.value["instance_type"]
+#
+#  env             = var.env
+#  tags            = {}
+#  kms             = var.kms_key_id
+#  bastion_cidrs   = var.bastion_cidrs
+#  route53_zone_id = var.zone_id
+#  project_name = var.project_name
+#
+#  subnets  = lookup(lookup(module.vpc, "main", null), "db_subnets", null)
+#  vpc_id   = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+#  sg_cidrs = lookup(lookup(var.vpc, "main", null), "app_subnets", null)
+#
+#}
 
 
 
