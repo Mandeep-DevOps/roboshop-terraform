@@ -21,10 +21,21 @@ eks = {
   main = {
     node_groups = {
       n1 = {
-        size = 1
+        size           = 1
         instance_types = ["t3.large"]
-        capacity_type = "SPOT"
+        capacity_type  = "SPOT"
       }
     }
   }
 }
+
+docdb = {
+  main = {
+    engine                 = "docdb"
+    engine_version         = "4.0.0"
+    instance_class         = "db.t3.medium"
+    parameter_group_family = "docdb4.0"
+    instance_count         = 1
+  }
+}
+
