@@ -13,6 +13,8 @@ pipelines:
         branch: main
     stages:
     - DEV:
+        approval:
+            type: manual
         fetch_materials: true
         jobs:
           deployment:
